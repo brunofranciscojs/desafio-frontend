@@ -3,8 +3,6 @@ import Produto from "../../Product.tsx";
 import Carrinho from "../../Cart.tsx";
 import CarrinhoMobile from "../../CartMobile.tsx";
 import Button from "../../button.tsx";
-import "@splidejs/react-splide/css";
-import { Splide, SplideSlide } from "@splidejs/react-splide";
 
 interface ProductImage {
   image: string;
@@ -138,9 +136,9 @@ export default function Menu() {
                               [&:has(li>div.is-active)_li>div.is-active_img]:[outline:solid]
                               [&:has(li>div.is-active)_li>div.is-active_img]:p-0.5">
 
-            <Splide options={{ perPage: 3, type: "carousel", width: 400, breakpoints: { 960: { width: "100%" } } }} >
+            <ul className="categorias flex gap-10 text-center px-5 [&:has(.active)_.active_img]:[outline:2px_solid_#333] [&:has(.active)_.active_img]:p-0.5">
               {category.map(section => (
-                <SplideSlide key={section.id}>
+                <li key={section.id}>
                   <div className={`text-center py-1 ${ativa === section.name ? "is-active" : ""}`} onClick={() => { setAtiva(section.name) }}>
                     <img src={section.photo} style={{ outlineColor: settings?.primaryColor }}
                       className="w-24 h-24 object-cover object-center rounded-full duration-75 transition-color p-0.5 mx-auto" />
@@ -148,9 +146,9 @@ export default function Menu() {
                       {section.name}
                     </span>
                   </div>
-                </SplideSlide>
+                </li>
               ))}
-            </Splide>
+            </ul>
 
             <div className="produtos lg:px-2 px-0 py-12">
               <div className="flex w-full mb-12 justify-between pr-3 px-4">
