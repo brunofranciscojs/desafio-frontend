@@ -88,7 +88,7 @@ export default function Menu() {
 
   useEffect(() => {
     const fetchMenu = async () => {
-      const response = await fetch("https://brunofrancisco.com.br/menuChallenge/src/menu.json");
+      const response = await fetch("https://cdn-dev.preoday.com/challenge/menu");
       const json = await response.json();
       const categoria: Categorias[] = json.sections.map((section: Section) => ({
         id: section.id,
@@ -108,7 +108,7 @@ export default function Menu() {
     fetchMenu();
 
     const fetchConfigFile = async () => {
-      const response = await fetch("./../../configuration.json");
+      const response = await fetch("https://cdn-dev.preoday.com/challenge/venue/9");
       const configuration = await response.json();
       setSettings({
         bannerImage: configuration.webSettings.bannerImage,

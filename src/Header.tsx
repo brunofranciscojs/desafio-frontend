@@ -19,7 +19,7 @@ export default function Header(){
 
     useEffect(() => {
       const fetchConfigFile = async () => {
-        const response = await fetch("https://brunofrancisco.com.br/menuChallenge/src/configuration.json");
+        const response = await fetch("https://cdn-dev.preoday.com/challenge/venue/9");
         const configuration = await response.json();
   
         setSettings({

@@ -12,7 +12,7 @@ export default function Contact() {
     const [settings, setSettings] = useState<Settings | null>(null);
 
     const fetchConfigFile = () =>{
-      fetch("https://brunofrancisco.com.br/menuChallenge/src/configuration.json").then(response => response.json())
+      fetch("https://cdn-dev.preoday.com/challenge/venue/9").then(response => response.json())
       .then(configuration =>{
         setSettings({
             name:configuration.name,
