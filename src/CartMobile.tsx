@@ -65,7 +65,7 @@ const CarrinhoMobile: React.FC = () => {
 
       {itensCarrinho.length > 0 && (
           <Button title={`Ver carrinho • ${precoBRL(total)}`} style={{"backgroundColor":settings.webSettings.primaryColour}}
-                  className="rounded-full px-12 py-5 text-center text-white mx-auto fixed bottom-3 w-[90%] shadow-xl z-0" 
+                  className="rounded-full px-5 py-5 text-center text-white mx-auto fixed bottom-3 w-[90%] shadow-xl z-0 left-1/2 -translate-x-1/2" 
                   onClick={() => setCartButton(true)}
             />
       )}
@@ -111,7 +111,7 @@ const CarrinhoMobile: React.FC = () => {
                     </div>
                   </div>
                 ))
-            )};
+            )}
           </div>
 
           {itensCarrinho.length > 0 ? ( <>
@@ -135,7 +135,7 @@ const CarrinhoMobile: React.FC = () => {
             </>)
           : null };
         </div>
-    )};</>
+    )}</>
   );
 };
   
