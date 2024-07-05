@@ -22,7 +22,7 @@ const ModifyCart: React.FC<Categoria> = ({id}) => {
 
     useEffect(() => {
         const fetchConfigFile = async () => {
-          const response = await fetch("../../configuration.json");
+          const response = await fetch("https://brunofrancisco.com.br/menuChallenge/src/configuration.json");
           const configuration = await response.json();
     
           setSettings({

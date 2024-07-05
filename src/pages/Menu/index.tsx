@@ -88,7 +88,7 @@ export default function Menu() {
 
   useEffect(() => {
     const fetchMenu = async () => {
-      const response = await fetch("../../../menu.json");
+      const response = await fetch("https://brunofrancisco.com.br/menuChallenge/src/menu.json");
       const json = await response.json();
       const categoria: Categorias[] = json.sections.map((section: Section) => ({
         id: section.id,
