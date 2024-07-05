@@ -1,30 +1,88 @@
-# React + TypeScript + Vite
+# Desafio Front-End 
+Bem-vindo ao meu projeto de desafio de front-end Este projeto tem como objetivo criar uma aplicação que exibe detalhes de restaurantes e seus respectivos menus, permitindo que os clientes vejam cada item e os adicionem ao carrinho de compras.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Visão Geral
+Neste desafio, construí uma aplicação utilizando React TypeScript, onde os usuários podem navegar pelos menus dos restaurantes e adicionar itens ao carrinho de compras. 
+O projeto foi hospedado no Netlify para demonstração pública.
 
-Currently, two official plugins are available:
+ * ### Deploy do Projeto: https://desafio-fej24.netlify.app/
+ 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Tecnologias Utilizadas
+ - React TypeScript: Utilizei React com TypeScript para garantir a tipagem estática e melhorar a manutenção do código.
+ - Tailwind CSS: Optei por Tailwind CSS para facilitar a estilização devido ao curto prazo de execução do projeto.
+ - API Proxy allOrigins: Utilizei o proxy allOrigins para contornar restrições de CORS e acessar a API de produtos e configurações.
+ - Netlify: O projeto está hospedado no Netlify para demonstração pública e facilitar o acesso.
 
-## Expanding the ESLint configuration
+###Estrutura de Pastas
+A estrutura de pastas do projeto é organizada da seguinte forma:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+```css
+desafio-frontend/
+│
+├── public/
+│   └── index.html
+│
+├── src/
+│   ├── components/
+│   │   ├── Carrinho.tsx
+│   │   ├── CarrinhoMobile.tsx
+│   │   ├── Produto.tsx
+│   │   └── ...
+│   │
+│   ├── pages/
+│   │   ├── Menu/
+│   │   │   ├── index.tsx
+│   │   │   ├── Product.tsx
+│   │   │   └── ...
+│   │   ├── Contact/
+│   │   │   ├── index.tsx
+│   │   │   └── ...
+│   │   └── ...
+│   │
+│   ├── redux/
+│   │   ├── storeCounter.tsx
+│   │   ├── CartItems.tsx
+│   │   ├── ItemCounter.tsx
+│   │   └── ...
+│   │
+│   ├── App.tsx
+│   ├── index.tsx
+│   ├── styles.css
+│   └── ...
+│
+├── .gitignore
+├── package.json
+└── README.md
+```
+### Como Rodar o Projeto Localmente
+Para rodar o projeto localmente, siga os passos abaixo:
 
-- Configure the top-level `parserOptions` property like this:
+### Clone o Repositório:
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+git clone https://github.com/brunofranciscu/desafio-frontend.git
+cd desafio-frontend
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Instale as Dependências:
+
+```bash
+npm install
+```
+
+### Rodar o Servidor de Desenvolvimento:
+
+```bash
+npm start
+```
+### Acesse no Navegador:
+Abra o seu navegador e visite http://localhost:3000.
+
+Contribuições e Melhorias Futuras
+Este projeto foi desenvolvido dentro de um prazo limitado, portanto, existem oportunidades para melhorias e expansões, como:
+
+Implementação de mais funcionalidades no carrinho de compras, como remoção de itens e cálculo de descontos.
+Melhoria na responsividade e acessibilidade da aplicação.
+Testes automatizados para garantir a robustez do código.
+Sinta-se à vontade para explorar o código-fonte, fazer fork do repositório e enviar suas contribuições através de pull requests.
