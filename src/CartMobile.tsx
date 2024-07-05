@@ -17,12 +17,12 @@ interface Settings {
 const CarrinhoMobile: React.FC = () => {
     const itensCarrinho = useSelector((state: RootState) => state.carrinho.items);
     const total = useSelector((state: RootState) => state.carrinho.total);
-    const dispatch = useDispatch<AppDispatch>();
-    const somaItens = (item:ItemCarrinho) => item.preco * item.quantidade;
-    const precoBRL = (preco:number) => new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(preco);
     const [settings, setSettings] = useState<Settings | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
     const [cartButton, setCartButton] = useState<boolean>(false);
+    const dispatch = useDispatch<AppDispatch>();
+    const somaItens = (item:ItemCarrinho) => item.preco * item.quantidade;
+    const precoBRL = (preco:number) => new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" }).format(preco);
 
     useEffect(() => {
       const fetchConfigFile = async () => {
@@ -76,14 +76,16 @@ const CarrinhoMobile: React.FC = () => {
           <Button title={"X"} onClick={() => setCartButton(false)} className="bg-gray-200 text-gray-800 rounded-full w-8 h-8 absolute top-4 right-4" />
 
           <h3 className="font-semibold text-gray-700 text-3xl bg-[#F8F9FA] py-5 px-5">Carrinho</h3>
-          <div className="block h-auto py-5 px-5">
+          <div className="block h-auto py-5">
 
             {itensCarrinho.length === 0 ? 
-              "Seu carrinho está vazio." : (
-                
+              <span className="px-5">
+                Seu carrinho está vazio.
+              </span> 
+              : (
                 itensCarrinho.map(item => (
 
-                  <div key={item.id} className="mb-5 px-5">
+                  <div key={item.id} className="px-5 border border-l-0 border-r-0 py-5 -mb-[1px]">
                     <div className="flex items-center justify-between">
                         <span>{item.name}</span>
                         <b>{precoBRL(somaItens(item))}</b>
@@ -91,20 +93,26 @@ const CarrinhoMobile: React.FC = () => {
 
                     {item.modifiers.length > 0 && (
 
-                      <small className="leading-none mb-3 block px-5"> 
-                          {item.modifiers.map(modifier => ( modifier.name ))} 
+                      <small className="leading-none mb-3 block"> 
+                          {item.modifiers.map(modifier => ( 
+                            <span>
+                              {modifier.name}
+                              <span> +({precoBRL(item.preco)})</span>
+                            </span>
+                             
+                            ))} 
                       </small>
                     )}
                     <div className="flex">
 
-                      <Button className="leading-none rounded-full w-5 h-5 flex justify-center text-white text-md font-bold text-center"
+                      <Button className="leading-none rounded-full w-5 h-5 flex justify-center text-white text-md font-bold text-center [&:has(span)_span]:block [&:has(span)_span]:translate-y-[2px] lg:[&:has(span)_span]:translate-y-0"
                               title={"-"} 
                               onClick={() => dispatch(diminuir(item.id))} 
                               style={{"backgroundColor": settings.webSettings.primaryColour}}/>
 
                       <b className="text-sm px-[3px] w-8 text-center">{item.quantidade}</b>
 
-                      <Button className="leading-none rounded-full w-5 h-5 flex justify-center text-white text-md font-bold text-center z-10"
+                      <Button className="leading-none rounded-full w-5 h-5 flex justify-center text-white text-md font-bold text-center z-10 [&:has(span)_span]:translate-y-[2px] lg:[&:has(span)_span]:translate-y-0"
                               title={"+"} 
                               onClick={() => dispatch(aumentar(item.id))} 
                               style={{"backgroundColor":settings.webSettings.primaryColour}}/>
@@ -115,7 +123,7 @@ const CarrinhoMobile: React.FC = () => {
           </div>
 
           {itensCarrinho.length > 0 ? ( <>
-              <div className="px-5 mx-auto">
+              <div className=" mx-auto">
                 <div className="text-gray-700 text-xl bg-[#F8F9FA] py-4 px-5 flex justify-between items-center shadow-md">
                   <small className="text-sm">Subtotal</small>
                   <span className="font-semibold">{precoBRL(total)}</span>

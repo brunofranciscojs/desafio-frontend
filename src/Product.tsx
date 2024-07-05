@@ -102,8 +102,9 @@ const Produto: React.FC<Categoria> = ({ category }) => {
         if(modal){
           return(
               <>
-                <div className="overlay fixed top-0 left-0 bg-[#00000088] w-full h-full z-0 backdrop-blur-sm hidden lg:block"></div>
-                <li key={id} className="flex gap-12 fixed top-1/2 -translate-y-1/2 -translate-x-2/4 left-1/2 lg:h-auto lg:w-[480px] w-full h-full z-[99]">
+                <div className="overlay fixed top-0 left-0 bg-[#00000088] w-full h-full z-0 hidden lg:block"></div>
+                <li key={id} className="flex gap-12 fixed top-1/2 -translate-y-1/2 -translate-x-2/4 left-1/2 lg:h-auto lg:w-[480px] w-full h-full z-[99]"
+                            style={{height:photo ? `${window.innerWidth < 1024 ? '100%' : 'auto'}` : '40%', top:photo ? '50%' : `${window.innerWidth < 1024 ? '80%' : '50%'}`, boxShadow:photo ? 'none' :'-5px 0 35px #00000044'}}>
                   <div className="flex flex-col gap-2 z-10 bg-white lg:w-[480px] w-full">
 
                   <Button 
@@ -151,7 +152,7 @@ const Produto: React.FC<Categoria> = ({ category }) => {
                           </div>
                         </div>
                         ))}
-                      <div className="flex gap-5 flex-col px-7 pb-5 lg:relative absolute bottom-3 w-full mx-auto">
+                      <div className="flex gap-5 flex-col px-7 pb-5 lg:relative absolute bottom-3 w-full mx-auto backdrop-blur-sm lg:backdrop-blur-none">
                         
                         <div className="flex items-center justify-center">
 
