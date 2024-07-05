@@ -40,7 +40,6 @@ export default function Header(){
                 primaryColourHover: configuration.webSettings.primaryColourHover,
               }
             });
-            console.log(configuration.webSettings)
           } catch (error) {
             console.error("Failed to fetch configuration", error);
           } finally {

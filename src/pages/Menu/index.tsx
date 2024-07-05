@@ -3,6 +3,7 @@ import Produto from "../../Product.tsx";
 import Carrinho from "../../Cart.tsx";
 import CarrinhoMobile from "../../CartMobile.tsx";
 import Button from "../../button.tsx";
+import Search from "../../Search.tsx";
 
 interface ProductImage {
   image: string;
@@ -136,12 +137,13 @@ export default function Menu() {
   return (
     <>
       <section className="py-12 w-full mx-auto lg:px-10 px-0 bg-[#F8F9FA] lg:bg-[#eeeeee] relative">
+          <Search/>
         <div className="lg:bg-[#F8F9FA] bg-[#fff] max-w-[1280px] mx-auto my-2 rounded-md gap-5 py-12 lg:px-12 px-1 flex lg:flex-row flex-col">
           <div className="flex flex-col bg-white lg:shadow-md shadow-none lg:p-8 p-1 w-full lg:min-w-[500px] min-w-full
                               [&:has(li>div.is-active)_li>div.is-active_img]:outline-4
                               [&:has(li>div.is-active)_li>div.is-active_img]:[outline:solid]
                               [&:has(li>div.is-active)_li>div.is-active_img]:p-0.5">
-
+                                  
             <ul className="categorias flex gap-10 text-center px-5 [&:has(.active)_.active_img]:[outline:2px_solid_#333] [&:has(.active)_.active_img]:p-0.5">
               {category.map(section => (
                 <li key={section.id}>
