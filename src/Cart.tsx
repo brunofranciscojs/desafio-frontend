@@ -5,14 +5,15 @@ import { diminuir, aumentar, ItemCarrinho } from "./redux/CartItems.tsx";
 import Button from "./button.tsx";
 
 interface Settings {
-  bannerImage: string;
-  bannerBgColor: string;
-  navigationColor: string;
-  primaryColor: string;
-  backgroundColor: string;
-  hover: string;
+  webSettings:{
+    bannerImage: string;
+    bannerBgColor: string;
+    navBackgroundColour: string;
+    primaryColour: string;
+    backgroundColour: string;
+    primaryColourHover: string;
+  }
 }
-
 const Carrinho: React.FC = () => {
     const itensCarrinho = useSelector((state: RootState) => state.carrinho.items);
     const total = useSelector((state: RootState) => state.carrinho.total);
@@ -24,19 +25,32 @@ const Carrinho: React.FC = () => {
 
     useEffect(() => {
       const fetchConfigFile = async () => {
-        const response = await fetch("https://cdn-dev.preoday.com/challenge/venue/9");
-        const configuration = await response.json();
+        try {
+          const response = await fetch(
+            `https://api.allorigins.win/get?url=${encodeURIComponent(
+              'https://cdn-dev.preoday.com/challenge/venue/9'
+            )}`
+          );
+          const data = await response.json();
+          const configuration: Settings = JSON.parse(data.contents);
   
-        setSettings({
-          bannerImage: configuration.webSettings.bannerImage,
-          bannerBgColor: "#36231C",
-          navigationColor: configuration.webSettings.navBackgroundColour,
-          primaryColor: configuration.webSettings.primaryColour,
-          backgroundColor: configuration.webSettings.backgroundColour,
-          hover: configuration.webSettings.primaryColourHover,
-        })
-        setLoading(false);
-    }
+          setSettings({
+            webSettings:{
+              bannerImage: configuration.webSettings.bannerImage,
+              bannerBgColor: "#36231C",
+              navBackgroundColour: configuration.webSettings.navBackgroundColour,
+              primaryColour: configuration.webSettings.primaryColour,
+              backgroundColour: configuration.webSettings.backgroundColour,
+              primaryColourHover: configuration.webSettings.primaryColourHover,
+            }
+          });
+        } catch (error) {
+          console.error("Failed to fetch configuration", error);
+        } finally{
+          setLoading(false);
+        }
+      };
+  
       fetchConfigFile();
     }, []);
   
@@ -72,14 +86,14 @@ const Carrinho: React.FC = () => {
                     <Button className="leading-none rounded-full w-5 h-5 flex justify-center text-white text-md font-bold text-center"
                             title={"-"} 
                             onClick={() => dispatch(diminuir(item.id))} 
-                            style={{"backgroundColor": settings.primaryColor}}/>
+                            style={{"backgroundColor": settings.webSettings.primaryColour}}/>
 
                     <b className="text-sm px-[3px] w-8 text-center">{item.quantidade}</b>
 
                     <Button className="leading-none rounded-full w-5 h-5 flex justify-center text-white text-md font-bold text-center"
                             title={"+"} 
                             onClick={() => dispatch(aumentar(item.id))} 
-                            style={{"backgroundColor":settings.primaryColor}}/>
+                            style={{"backgroundColor":settings.webSettings.primaryColour}}/>
                   </div>
                 </div>
               ))

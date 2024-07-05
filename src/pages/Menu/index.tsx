@@ -75,7 +75,6 @@ const useWindowSize = () => {
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
-
   return windowSize;
 }
 
@@ -88,8 +87,10 @@ export default function Menu() {
 
   useEffect(() => {
     const fetchMenu = async () => {
-      const response = await fetch("https://cdn-dev.preoday.com/challenge/menu");
-      const json = await response.json();
+      const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://cdn-dev.preoday.com/challenge/menu')}`);
+      const data = await response.json();
+      const json = JSON.parse(data.contents);
+
       const categoria: Categorias[] = json.sections.map((section: Section) => ({
         id: section.id,
         name: section.name,
@@ -103,13 +104,15 @@ export default function Menu() {
           modifiers: product.modifiers || []
         })),
       }));
+
       setCategory(categoria);
     };
-    fetchMenu();
 
     const fetchConfigFile = async () => {
-      const response = await fetch("https://cdn-dev.preoday.com/challenge/venue/9");
-      const configuration = await response.json();
+      const response = await fetch(`https://api.allorigins.win/get?url=${encodeURIComponent('https://cdn-dev.preoday.com/challenge/venue/9')}`);
+      const data = await response.json();
+      const configuration = JSON.parse(data.contents);
+
       setSettings({
         bannerImage: configuration.webSettings.bannerImage,
         bannerBgColor: "#36231C",
@@ -118,8 +121,11 @@ export default function Menu() {
         backgroundColor: configuration.webSettings.backgroundColour,
         hover: configuration.webSettings.primaryColourHover,
       });
+
       setLoading(false);
     };
+
+    fetchMenu();
     fetchConfigFile();
   }, []);
 

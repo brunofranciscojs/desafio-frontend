@@ -34,13 +34,16 @@ interface Categoria {
   quantidade: (count: number) => void;
 }
 
+
 interface Settings {
-  bannerImage: string;
-  bannerBgColor: string;
-  navigationColor: string;
-  primaryColor: string;
-  backgroundColor: string;
-  hover: string;
+  webSettings:{
+    bannerImage: string;
+    bannerBgColor: string;
+    navBackgroundColour: string;
+    primaryColour: string;
+    backgroundColour: string;
+    primaryColourHover: string;
+  }
 }
 const Produto: React.FC<Categoria> = ({ category }) => {
     const { preco, description, name, photo, id, modifiers } = category;
@@ -56,20 +59,32 @@ const Produto: React.FC<Categoria> = ({ category }) => {
       setModificadores([modifiers]);
     }
     const [settings, setSettings] = useState<Settings | null>(null);
-    const fetchConfigFile = () =>{
-      fetch("https://cdn-dev.preoday.com/challenge/venue/9").then(response => response.json())
-      .then(configuration =>{
-        setSettings({
-            bannerImage: configuration.webSettings.bannerImage,
-            bannerBgColor:"#36231C",
-            navigationColor: configuration.webSettings.navBackgroundColour,
-            primaryColor: configuration.webSettings.primaryColour,
-            backgroundColor: configuration.webSettings.backgroundColour,
-            hover: configuration.webSettings.primaryColourHover
-        });
-      });
-    };
-    fetchConfigFile()
+      const fetchConfigFile = async () => {
+        try {
+          const response = await fetch(
+            `https://api.allorigins.win/get?url=${encodeURIComponent(
+              'https://cdn-dev.preoday.com/challenge/venue/9'
+            )}`
+          );
+          const data = await response.json();
+          const configuration: Settings = JSON.parse(data.contents);
+  
+          setSettings({
+            webSettings:{
+              bannerImage: configuration.webSettings.bannerImage,
+              bannerBgColor: "#36231C",
+              navBackgroundColour: configuration.webSettings.navBackgroundColour,
+              primaryColour: configuration.webSettings.primaryColour,
+              backgroundColour: configuration.webSettings.backgroundColour,
+              primaryColourHover: configuration.webSettings.primaryColourHover,
+            }
+          });
+        } catch (error) {
+          console.error("Failed to fetch configuration", error);
+        }
+      };
+  
+      fetchConfigFile();
     const colocarCarrinho = () => {
       dispatch(adicionarcarrinho({
           id, 
@@ -143,7 +158,7 @@ const Produto: React.FC<Categoria> = ({ category }) => {
                           <Button 
                               title={"-"} 
                               onClick={() => dispatch(diminuir(id))} 
-                              style={{"backgroundColor":quantidade < 2 ? "#DADADA" : settings.primaryColor}}
+                              style={{"backgroundColor":quantidade < 2 ? "#DADADA" : settings.webSettings.primaryColour}}
                               disabled={quantidade < 2 ? true : false} 
                               className="leading-none rounded-full w-8 h-8 text-[2rem] flex justify-center text-white text-md font-bold text-center [&:has(span)_span]:block lg:[&:has(span)_span]:-translate-y-1"
                               />
@@ -152,11 +167,11 @@ const Produto: React.FC<Categoria> = ({ category }) => {
                           <Button className="leading-none rounded-full w-8 h-8 text-[2rem] flex justify-center text-white text-md font-bold text-center [&:has(span)_span]:block lg:[&:has(span)_span]:-translate-y-1"
                                   title={"+"} 
                                   onClick={() => dispatch(aumentar(id))} 
-                                  style={{"backgroundColor":settings.primaryColor}}/>
+                                  style={{"backgroundColor":settings.webSettings.primaryColour}}/>
                         </div>
                       
                         <button className="rounded-full px-12 py-5 text-center text-white w-full mx-auto" 
-                                style={{"backgroundColor":settings.primaryColor}} onClick={colocarCarrinho}>
+                                style={{"backgroundColor":settings.webSettings.primaryColour}} onClick={colocarCarrinho}>
                             Add to Order • {precoBRL(increasePrice(price))}
                         </button>
 
