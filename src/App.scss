@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes show{
+    from{ translate:-270px 0}
+    to{translate: 0 0}
+}
