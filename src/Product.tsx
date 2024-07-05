@@ -57,7 +57,7 @@ const Produto: React.FC<Categoria> = ({ category }) => {
     }
     const [settings, setSettings] = useState<Settings | null>(null);
     const fetchConfigFile = () =>{
-      fetch("./src/configuration.json").then(response => response.json())
+      fetch("../../configuration.json").then(response => response.json())
       .then(configuration =>{
         setSettings({
             bannerImage: configuration.webSettings.bannerImage,

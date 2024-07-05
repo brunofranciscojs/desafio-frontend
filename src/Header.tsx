@@ -19,7 +19,7 @@ export default function Header(){
 
     useEffect(() => {
       const fetchConfigFile = async () => {
-        const response = await fetch("./src/configuration.json");
+        const response = await fetch("../../configuration.json");
         const configuration = await response.json();
   
         setSettings({
