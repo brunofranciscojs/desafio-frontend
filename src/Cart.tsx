@@ -45,7 +45,7 @@ const Carrinho: React.FC = () => {
             }
           });
         } catch (error) {
-          console.error("Failed to fetch configuration", error);
+          console.error("Falha ao carregar configuração", error);
         } finally{
           setLoading(false);
         }
@@ -55,7 +55,7 @@ const Carrinho: React.FC = () => {
     }, []);
   
     if (loading) {
-      return <div className="bg-[#F8F9FA] max-w-[1280px] mx-auto my-2 rounded-md flex gap-5 p-12">Loading...</div>
+      return <div className="bg-[#F8F9FA] max-w-[1280px] mx-auto my-2 rounded-md flex gap-5 p-12">carregando...</div>
     }
     
     return (<>
