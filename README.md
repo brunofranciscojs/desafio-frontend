@@ -5,7 +5,7 @@ Bem-vindo ao meu projeto de desafio de front-end Este projeto tem como objetivo 
 Neste desafio, construí uma aplicação utilizando React TypeScript, onde os usuários podem navegar pelos menus dos restaurantes e adicionar itens ao carrinho de compras. 
 O projeto foi hospedado no Netlify para demonstração pública.
 
- * ### Deploy do Projeto: https://desafio-fej24.netlify.app/
+ * ### Deploy do Projeto: https://desafio-frontend-t65a.vercel.app/
  
 
 ### Tecnologias Utilizadas
