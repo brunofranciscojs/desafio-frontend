@@ -147,7 +147,8 @@ export default function Menu() {
             <ul className="categorias flex gap-10 text-center px-5 [&:has(.active)_.active_img]:[outline:2px_solid_#333] [&:has(.active)_.active_img]:p-0.5">
               {category.map(section => (
                 <li key={section.id}>
-                  <div className={`text-center py-1 ${ativa === section.name ? "is-active" : ""}`} onClick={() => { setAtiva(section.name) }}>
+                  <div className={`text-center py-1 ${ativa === section.name ? "is-active" : ""}`} 
+                        onClick={() => { setAtiva(section.name), document.getElementById(section.name.toLowerCase())?.scrollIntoView({behavior:'smooth'}) }}>
                     <img src={section.photo} style={{ outlineColor: settings?.primaryColor }}
                       className="w-24 h-24 object-cover object-center rounded-full duration-75 transition-color p-0.5 mx-auto" />
                     <span className="block py-2">
@@ -158,17 +159,26 @@ export default function Menu() {
               ))}
             </ul>
 
-            <div className="produtos lg:px-2 px-0 py-12">
-              <div className="flex w-full mb-12 justify-between pr-3 px-4">
-                <strong className="text-2xl">{ativa}</strong>
-                <Button title={"⌵"} className="-rotate-[180deg] text-2xl font-bold" />
-              </div>
+            <div className="produtos lg:px-2 px-0 py-12 flex flex-col gap-10">
+              {category.map((categoria) => (
+                <div key={categoria.id} className="categoria-section">
 
-              <ul className="flex flex-col gap-8 h-auto overflow-hidden">
-                {category.filter(categoria => categoria.name === ativa)[0]?.itens.map(item => (
-                  <Produto key={item.id} category={item} count={0} quantidade={() => { }} />
-                ))}
-              </ul>
+                  <div className="flex w-full mb-6 justify-between pr-3 px-4" id={categoria.name.toLowerCase()}>
+                    <strong className="text-3xl">{categoria.name}</strong>
+                    <Button title={"⌵"} className="-rotate-[180deg] text-2xl font-bold" />
+                  </div>
+
+                  <ul className="flex flex-col gap-6 h-auto overflow-hidden">
+                    {categoria.itens.map(item => (
+                      <Produto 
+                        key={item.id} 
+                        category={item} 
+                        count={0} 
+                        quantidade={() => { }} />
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
           {width > 1023 && <Carrinho />}

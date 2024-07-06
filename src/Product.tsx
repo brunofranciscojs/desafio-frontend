@@ -116,7 +116,7 @@ const Produto: React.FC<Categoria> = ({ category }) => {
                   {photo && <img src={photo} className="w-full lg:h-[320px] h-[200px] object-cover object-center"/> }
                     
                    <div className="flex flex-col h-auto lg:w-[480px] w-full lg:h-full justify-center gap-2 lg:py-5 py-2">
-                      <div className="py-3 px-7 flex flex-col gap-2 ">
+                      <div className="py-3 px-7 flex flex-col gap-2">
                         <strong className="text-2xl">{name}</strong>
                         <span className="text-base leading-none">{description}</span>
                         <strong>{precoBRL(price)}</strong>
@@ -189,7 +189,7 @@ const Produto: React.FC<Categoria> = ({ category }) => {
         return(
           <li key={id} className="flex lg:gap-6 gap-0 cursor-pointer hover:bg-gray-100 duration-200 transition-colors py-5 px-4 justify-between " onClick={() => {setModal(true)}}>
 
-            <div className="flex flex-col lg:w-3/4 w-1/2 justify-center gap-2">
+            <div className="flex flex-col lg:w-3/4 w-1/2 justify-center gap-0">
               <strong>{name}</strong>
               <span className="truncate text-xl">{description}</span>
               <strong>{precoBRL(preco)}</strong>
