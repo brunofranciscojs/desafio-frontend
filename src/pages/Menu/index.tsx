@@ -139,7 +139,7 @@ export default function Menu() {
       <section className="py-12 w-full mx-auto lg:px-10 px-0 bg-[#F8F9FA] lg:bg-[#eeeeee] relative">
           <Search/>
         <div className="lg:bg-[#F8F9FA] bg-[#fff] max-w-[1280px] mx-auto my-2 rounded-md gap-5 py-12 lg:px-12 px-1 flex lg:flex-row flex-col">
-          <div className="flex flex-col bg-white lg:shadow-md shadow-none lg:p-8 p-1 w-full lg:min-w-[500px] min-w-full
+          <div className="flex flex-col bg-white lg:shadow-md shadow-none w-full lg:min-w-[500px] min-w-full
                               [&:has(li>div.is-active)_li>div.is-active_img]:outline-4
                               [&:has(li>div.is-active)_li>div.is-active_img]:[outline:solid]
                               [&:has(li>div.is-active)_li>div.is-active_img]:p-0.5">
@@ -159,11 +159,11 @@ export default function Menu() {
               ))}
             </ul>
 
-            <div className="produtos lg:px-2 px-0 py-12 flex flex-col gap-10">
+            <div className="produtos px-0 py-12 flex flex-col gap-10">
               {category.map((categoria) => (
-                <div key={categoria.id} className="categoria-section">
+                <div key={categoria.id} className="categoria-section border border-gray-200 border-l-0 border-b-0 border-r-0 pt-8">
 
-                  <div className="flex w-full mb-6 justify-between pr-3 px-4" id={categoria.name.toLowerCase()}>
+                  <div className="flex w-full mb-1 justify-between pr-3 lg:px-8 px-4" id={categoria.name.toLowerCase()}>
                     <strong className="text-3xl">{categoria.name}</strong>
                     <Button title={"⌵"} className="-rotate-[180deg] text-2xl font-bold" />
                   </div>
