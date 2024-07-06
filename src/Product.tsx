@@ -187,7 +187,7 @@ const Produto: React.FC<Categoria> = ({ category }) => {
           }
 
         return(
-          <li key={id} style={{pointerEvents:modal ? "none" : "auto"}} className="flex lg:gap-6 gap-0 cursor-pointer hover:bg-gray-100 duration-200 transition-colors py-5 px-4 justify-between " onClick={() => {setModal(true)}}>
+          <li key={id} style={{pointerEvents:modal ? "auto" : "none"}} className="flex lg:gap-6 gap-0 cursor-pointer hover:bg-gray-100 duration-200 transition-colors py-5 px-4 justify-between " onClick={() => {setModal(true)}}>
 
             <div className="flex flex-col lg:w-3/4 w-1/2 justify-center gap-2">
               <strong>{name}</strong>
