@@ -141,7 +141,7 @@ const CarrinhoMobile: React.FC = () => {
                     />
               </div>
             </>)
-          : null };
+          : null }
         </div>
     )}</>
   );

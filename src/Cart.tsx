@@ -65,7 +65,7 @@ const Carrinho: React.FC = () => {
         <div className="block h-auto">
 
           {itensCarrinho.length === 0 ? 
-            "Seu carrinho está vazio." : (
+            <span className="block py-5 px-4">Seu carrinho está vazio.</span> : (
               
               itensCarrinho.map(item => (
 
