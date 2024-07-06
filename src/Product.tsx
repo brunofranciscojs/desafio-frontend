@@ -187,7 +187,7 @@ const Produto: React.FC<Categoria> = ({ category }) => {
           }
 
         return(
-          <li key={id} className="flex lg:gap-6 gap-0 cursor-pointer hover:bg-gray-100 duration-200 transition-colors py-5 px-4 justify-between " onClick={() => {setModal(true)}}>
+          {!modal && <li key={id} style={{pointerEvents:modal ? "none" : "auto"}} className="flex lg:gap-6 gap-0 cursor-pointer hover:bg-gray-100 duration-200 transition-colors py-5 px-4 justify-between " onClick={() => {setModal(true)}}>
 
             <div className="flex flex-col lg:w-3/4 w-1/2 justify-center gap-0">
               <strong>{name}</strong>
@@ -196,7 +196,7 @@ const Produto: React.FC<Categoria> = ({ category }) => {
             </div>
 
             {photo && <img src={photo} className="lg:w-3/12 w-[45%] lg:h-[85px] h-[130px] object-cover object-center rounded-md"/> }
-          </li>
+          </li>}
         );
       };
 export default Produto;
