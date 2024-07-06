@@ -76,7 +76,7 @@ const CarrinhoMobile: React.FC = () => {
           <Button title={"X"} onClick={() => setCartButton(false)} className="bg-gray-200 text-gray-800 rounded-full w-8 h-8 absolute top-4 right-4" />
 
           <h3 className="font-semibold text-gray-700 text-3xl bg-[#F8F9FA] py-5 px-5">Carrinho</h3>
-          <div className="block h-auto py-5">
+          <div className="block h-auto">
 
             {itensCarrinho.length === 0 ? 
               <span className="px-5">
@@ -85,7 +85,7 @@ const CarrinhoMobile: React.FC = () => {
               : (
                 itensCarrinho.map(item => (
 
-                  <div key={item.id} className="px-5 border border-l-0 border-r-0 py-5 -mb-[1px]">
+                  <div key={item.id} className="px-5 border border-gray-200 border-l-0 border-b-0 border-r-0 py-5 -mb-[1px]">
                     <div className="flex items-center justify-between">
                         <span>{item.name}</span>
                         <b>{precoBRL(somaItens(item))}</b>
@@ -135,7 +135,7 @@ const CarrinhoMobile: React.FC = () => {
                 </div>
   
                   <Button title={`CheckOut Now`} 
-                          className="rounded-full px-12 py-5 text-center text-white mx-auto fixed bottom-3 w-[95%] shadow-xl left-1/2 -translate-x-1/2" 
+                          className="rounded-full px-12 py-5 text-center text-white mx-auto fixed bottom-3 w-[90%] shadow-xl left-1/2 -translate-x-1/2" 
                           style={{"backgroundColor":settings.webSettings.primaryColour}} 
                           onClick={() => setCartButton(false)}
                     />

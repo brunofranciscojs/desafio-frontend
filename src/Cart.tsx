@@ -62,14 +62,14 @@ const Carrinho: React.FC = () => {
     {settings && (
       <div className="carrinho bg-white shadow-md lg:w-[600px] w-full h-[calc(150px_+_20%)] hidden lg:block">
         <h3 className="font-semibold text-gray-700 text-3xl bg-[#F8F9FA] py-5 px-5">Carrinho</h3>
-        <div className="block h-auto py-5 px-5">
+        <div className="block h-auto">
 
           {itensCarrinho.length === 0 ? 
             "Seu carrinho está vazio." : (
               
               itensCarrinho.map(item => (
 
-                <div key={item.id} className="mb-5">
+                <div key={item.id} className="mb-5 border border-gray-200 border-l-0 border-b-0 border-r-0 py-4 px-5">
                   <div className="flex items-center justify-between">
                       <span>{item.name}</span>
                       <b>{precoBRL(somaItens(item))}</b>
