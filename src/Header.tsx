@@ -66,7 +66,7 @@ return (
                 </ul>
               </nav>
 
-              {open && <nav className="block lg:hidden fixed h-screen duration-75 z-50 top-0 left-0 shadow-xl w-[270px] overflow-hidden animate-[show_.1s_ease]" style={{"backgroundColor":settings.webSettings.primaryColour}}>
+              {open && <nav className="block lg:hidden fixed h-[100dvh] duration-75 z-50 top-0 left-0 shadow-xl w-[270px] overflow-hidden animate-[show_.1s_ease]" style={{"backgroundColor":settings.webSettings.primaryColour}}>
                 <ul className="flex flex-col justify-evenly gap-5 mx-auto p-12">
                   <li><a href="./Menu" className="text-white hover:text-gray-400 duration-150 text-[20px]" onClick={() => navigate("/Menu")}>MENU</a></li>
                   <li><a href="#" className="text-white hover:text-gray-400 duration-150 text-[20px]">ENTRAR</a></li>

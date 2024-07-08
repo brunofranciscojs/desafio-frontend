@@ -71,7 +71,7 @@ const CarrinhoMobile: React.FC = () => {
       )}
             
       {settings && cartButton && (
-        <div className="carrinho bg-white shadow-md h-screen fixed w-full top-0 left-0 z-50">
+        <div className="carrinho bg-white shadow-md h-[100dvh] fixed w-full top-0 left-0 z-50">
 
           <Button title={"X"} onClick={() => setCartButton(false)} className="bg-gray-200 text-gray-800 rounded-full w-8 h-8 absolute top-4 right-4" />
 
