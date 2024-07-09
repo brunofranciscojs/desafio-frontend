@@ -113,23 +113,23 @@ const Produto: React.FC<Categoria> = ({ category }) => {
                     className="bg-gray-200 text-gray-800 rounded-full w-8 h-8 absolute top-4 right-4"
                   />
 
-                  {photo && <img src={photo} className="w-full lg:h-[320px] h-[200px] object-cover object-center"/> }
+                  {photo && <img src={photo} className="w-full lg:h-[320px] h-[180px] object-cover object-center"/> }
                     
                    <div className="flex flex-col h-auto lg:w-[480px] w-full lg:h-full justify-center gap-2 lg:py-5 py-2">
-                      <div className="py-3 px-7 flex flex-col gap-2">
+                      <div className="py-0 px-7 flex flex-col gap-2">
                         <strong className="text-2xl">{name}</strong>
                         <span className="text-base leading-none">{description}</span>
                         <strong>{precoBRL(price)}</strong>
                       </div>
 
                         {modifiers.map(modifier => (
-                          <div key={modifier.id} className="flex flex-col gap-4">
-                              <div className="px-7 flex flex-col bg-[#F8F9FA] py-5">
+                          <div key={modifier.id} className="flex flex-col gap-2">
+                              <div className="px-7 flex flex-col bg-[#F8F9FA] py-3">
                                 <strong className="font-bold leading-none">{modifier.name}</strong>
                                 <sub className="leading-none">Selecione 1 opção</sub> 
                               </div>
 
-                            <div className="flex flex-col px-7 overflow-y-scroll h-36 justify-between">
+                            <div className="flex flex-col px-7 overflow-y-scroll h-32 justify-between">
                               {modifier.items.map(item => (
                                 <div key={item.id} className="flex justify-between w-full">
                                   <div className="flex flex-col w-full">
